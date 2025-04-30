@@ -1,3 +1,5 @@
+import Header from './../Header.jsx';
+import Footer from './../Footer.jsx';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -47,6 +49,8 @@ const ContactUs = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="pt-24 pb-16">
       {/* Section e parë: Titulli / Intro */}
       <section className="section bg-primary-50">
@@ -230,6 +234,8 @@ const ContactUs = () => {
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
   );
 };
 

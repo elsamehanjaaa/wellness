@@ -1,3 +1,6 @@
+
+import Header from './../Header.jsx';
+import Footer from './../Footer.jsx';
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -21,6 +24,8 @@ const AboutUs = () => {
   ];
 
   return (
+    <>
+    <Header/>
     <div className="pt-24">
       {/* Hero Section */}
       <section className="section bg-sage-50">
@@ -129,6 +134,8 @@ const AboutUs = () => {
         </div>
       </section>
     </div>
+    <Footer/>
+    </>
   );
 };
 
