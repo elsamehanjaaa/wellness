@@ -1,102 +1,112 @@
-import React, { useState, useEffect } from 'react';
-import { Leaf, Menu, X } from 'lucide-react';
+"use client";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X, Leaf, Sun, Moon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About Us", path: "/aboutus" },
+  { name: "Services", path: "/services" },
+  { name: "Contact", path: "/contact" },
+];
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2">
-          <div className={`p-1.5 rounded-full ${isScrolled ? 'bg-emerald-600' : 'bg-emerald-500'}`}>
-            <Leaf className="w-5 h-5 text-white" />
+    <header className="sticky top-0 w-full border-b bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-500 backdrop-blur-md z-50 transition-all duration-200">
+      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+        <div className="flex h-16 items-center justify-between">
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="rounded-full bg-emerald-600 p-1.5 transition-colors group-hover:bg-emerald-700">
+                <Leaf className="h-5 w-5 text-white" aria-hidden="true" />
+              </div>
+              <span className="font-semibold text-xl tracking-tight text-white">
+                Thermen<span className="text-emerald-400">Spa</span>
+              </span>
+            </Link>
           </div>
-          <span className={`text-xl font-cormorant font-semibold ${isScrolled ? 'text-emerald-800' : 'text-white'}`}>
-            Thermen Spa
-          </span>
-        </a>
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-8">
-          {['Home', 'Treatments', 'About', 'Gallery', 'Contact'].map((item) => (
-            <a 
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className={`font-medium transition hover:text-emerald-600 ${
-                isScrolled ? 'text-gray-700' : 'text-white'
-              }`}
-            >
-              {item}
-            </a>
-          ))}
-          <a 
-            href="#booking"
-            className="btn btn-primary text-sm py-2.5"
-          >
-            Book Now
-          </a>
-        </nav>
-
-        {/* Mobile Menu Toggle */}
-        <button 
-          className="md:hidden p-2"
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? (
-            <X className={`w-6 h-6 ${isScrolled ? 'text-gray-800' : 'text-white'}`} />
-          ) : (
-            <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-800' : 'text-white'}`} />
-          )}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white absolute top-full left-0 right-0 shadow-md">
-          <div className="container mx-auto py-4">
-            <nav className="flex flex-col gap-4">
-              {['Home', 'Treatments', 'About', 'Gallery', 'Contact'].map((item) => (
-                <a 
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-gray-700 font-medium py-2 hover:text-emerald-600 transition"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-              <a 
-                href="#booking"
-                className="btn btn-primary text-sm py-2.5 mt-2"
-                onClick={() => setIsMenuOpen(false)}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                className="px-1 py-2 text-sm font-medium transition hover:text-white text-emerald-100"
               >
-                Book Now
-              </a>
-            </nav>
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              className="relative rounded-md p-2 text-emerald-100 hover:bg-emerald-700/60"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute inset-0 m-auto h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </button>
+            <div className="hidden md:block">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md bg-emerald-600 text-sm font-medium text-white transition hover:bg-emerald-700 h-10 px-4 py-2"
+              >
+                Book Appointment
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-md hover:bg-emerald-700/60 text-emerald-100 h-10 w-10 md:hidden"
+              onClick={toggleMenu}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
         </div>
-      )}
+      </div>
+
+      {/* Mobile Navigation */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-[300px] border-b border-emerald-800" : "max-h-0"
+        }`}
+      >
+        <nav className="container px-4 sm:px-6 lg:px-8 py-4 flex flex-col space-y-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.path}
+              className="text-emerald-100 hover:text-white transition font-medium py-2"
+              onClick={closeMenu}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center rounded-md bg-emerald-600 text-sm font-medium text-white transition hover:bg-emerald-700 h-10 px-4 py-2 w-full"
+            onClick={closeMenu}
+          >
+            Book Appointment
+          </Link>
+        </nav>
+      </div>
     </header>
   );
-};
+}
 
 export default Header;

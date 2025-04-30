@@ -91,7 +91,11 @@ const Hero = () => {
     <div className="font-montserrat text-gray-800">
     
     
-      <section id="home" className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-b from-teal-900 via-teal-800 to-teal-700">
+    <section 
+  id="home" 
+  className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-500"
+>
+
         <motion.div
           className="absolute top-20 right-[10%] w-96 h-96 rounded-full bg-teal-500/20 blur-[100px]"
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.2, 0.3] }}
@@ -338,7 +342,7 @@ const Hero = () => {
       <section id="contact" className="bg-gray-50 py-20">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="section-title font-bold text-2xl ">Visit Our Center</h2>
+            <h2 className="section-title font-bold text-3xl ">Visit Our Center</h2>
             <p className="text-gray-600 max-w-xl mx-auto">
               We're conveniently located in the heart of the city, providing a tranquil oasis amidst the urban bustle.
             </p>

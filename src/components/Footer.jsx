@@ -1,5 +1,7 @@
 import React from 'react';
-import { Leaf, Facebook, Instagram, Twitter, Mail, PhoneCall } from 'lucide-react';
+import { Leaf, Mail, PhoneCall } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+
 
 const Footer = () => {
   return (
@@ -21,13 +23,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-3">
               <a href="#" className="p-2 bg-emerald-800 rounded-full hover:bg-emerald-700 transition">
-                <Facebook className="w-4 h-4" />
+                <FaFacebook className="w-4 h-4" />
               </a>
               <a href="#" className="p-2 bg-emerald-800 rounded-full hover:bg-emerald-700 transition">
-                <Instagram className="w-4 h-4" />
+                <FaInstagram className="w-4 h-4" />
               </a>
               <a href="#" className="p-2 bg-emerald-800 rounded-full hover:bg-emerald-700 transition">
-                <Twitter className="w-4 h-4" />
+                <FaTwitter className="w-4 h-4" />
               </a>
             </div>
           </div>
