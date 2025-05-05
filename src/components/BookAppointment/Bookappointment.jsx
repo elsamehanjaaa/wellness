@@ -5,8 +5,8 @@ import {
   MessageSquare, Check, ChevronLeft, ChevronRight,
   User, Star, Gift
 } from 'lucide-react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../Header';
+import Footer from '../Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BookAppointment = () => {
@@ -279,7 +279,7 @@ const BookAppointment = () => {
     <>
       <Header />
       <motion.div 
-        className="min-h-screen bg-gradient-to-b from-pink-50 via-rose-50 to-white"
+        className="min-h-screen bg-gradient-to-b from-purple-50 via-rose-50 to-amber-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -287,10 +287,10 @@ const BookAppointment = () => {
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
-              <h1 className="text-4xl md:text-5xl font-bold text-pink-950 mb-4 tracking-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-violet-950 mb-4 tracking-tight">
                 Book Your Experience
               </h1>
-              <p className="text-lg text-pink-700/80 max-w-2xl mx-auto font-light">
+              <p className="text-lg text-violet-700/80 max-w-2xl mx-auto font-light">
                 Schedule your personalized session for relaxation and rejuvenation. 
                 Our expert therapists are ready to help you unwind.
               </p>
@@ -304,8 +304,8 @@ const BookAppointment = () => {
                       <div 
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
                           step >= num 
-                            ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-200' 
-                            : 'bg-white text-pink-400 border border-pink-100 shadow-sm'
+                            ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-purple-200' 
+                            : 'bg-white text-violet-400 border border-violet-100 shadow-sm'
                         }`}
                       >
                         {step > num ? <Check size={16} /> : num}
@@ -314,7 +314,7 @@ const BookAppointment = () => {
                       {num < 3 && (
                         <div 
                           className={`w-20 h-1 mx-1 rounded-full ${
-                            step > num ? 'bg-gradient-to-r from-pink-500 to-rose-500' : 'bg-pink-100'
+                            step > num ? 'bg-gradient-to-r from-violet-600 to-purple-600' : 'bg-violet-100'
                           } transition-all duration-300`}
                         />
                       )}
@@ -322,10 +322,10 @@ const BookAppointment = () => {
                   ))}
                 </div>
                 
-                <div className="flex justify-between mt-2 text-sm font-medium text-pink-600 max-w-md mx-auto">
-                  <span className={step >= 1 ? 'text-pink-800' : ''}>Service</span>
-                  <span className={step >= 2 ? 'text-pink-800' : ''}>Date & Time</span>
-                  <span className={step >= 3 ? 'text-pink-800' : ''}>Your Details</span>
+                <div className="flex justify-between mt-2 text-sm font-medium text-violet-600 max-w-md mx-auto">
+                  <span className={step >= 1 ? 'text-violet-800' : ''}>Service</span>
+                  <span className={step >= 2 ? 'text-violet-800' : ''}>Date & Time</span>
+                  <span className={step >= 3 ? 'text-violet-800' : ''}>Your Details</span>
                 </div>
               </div>
             )}
@@ -342,14 +342,14 @@ const BookAppointment = () => {
                 {/* Step 1: Service Selection */}
                 {step === 1 && (
                   <form className="space-y-8">
-                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100">
-                      <div className="p-6 border-b border-pink-100 bg-gradient-to-r from-pink-50 to-rose-50">
-                        <h3 className="text-2xl font-semibold text-pink-900">Select Your Service</h3>
-                        <p className="text-pink-600 mt-1">Choose from our range of premium treatments</p>
+                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100">
+                      <div className="p-6 border-b border-violet-100 bg-gradient-to-r from-violet-50 to-purple-50">
+                        <h3 className="text-2xl font-semibold text-violet-900">Select Your Service</h3>
+                        <p className="text-violet-600 mt-1">Choose from our range of premium treatments</p>
                       </div>
 
                       {/* Categories */}
-                      <div className="px-6 pt-4 pb-2 border-b border-pink-100">
+                      <div className="px-6 pt-4 pb-2 border-b border-violet-100">
                         <div className="flex flex-wrap gap-2">
                           {categories.map((category) => (
                             <button
@@ -357,8 +357,8 @@ const BookAppointment = () => {
                               type="button"
                               className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                                 activeCategory === category
-                                  ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-200'
-                                  : 'bg-white text-pink-700 hover:bg-pink-50 shadow-sm'
+                                  ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-purple-200'
+                                  : 'bg-white text-violet-700 hover:bg-violet-50 shadow-sm'
                               }`}
                               onClick={() => setActiveCategory(category)}
                             >
@@ -376,8 +376,8 @@ const BookAppointment = () => {
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                             className={`bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ${
                               selectedService?.id === service.id
-                                ? 'ring-2 ring-pink-500 shadow-lg'
-                                : 'border border-pink-100 hover:border-pink-300 hover:shadow-md'
+                                ? 'ring-2 ring-violet-500 shadow-lg'
+                                : 'border border-violet-100 hover:border-violet-300 hover:shadow-md'
                             }`}
                             onClick={() => setSelectedService(service)}
                           >
@@ -389,21 +389,21 @@ const BookAppointment = () => {
                                 className="object-cover transition-transform duration-700 hover:scale-110"
                               />
                               {selectedService?.id === service.id && (
-                                <div className="absolute top-3 right-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white p-1 rounded-full shadow-lg">
+                                <div className="absolute top-3 right-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white p-1 rounded-full shadow-lg">
                                   <Check size={16} />
                                 </div>
                               )}
                             </div>
                             <div className="p-5">
                               <div className="flex justify-between">
-                                <h4 className="font-semibold text-pink-900 text-lg">{service.name}</h4>
-                                <div className="flex items-center text-pink-700 font-medium">
+                                <h4 className="font-semibold text-violet-900 text-lg">{service.name}</h4>
+                                <div className="flex items-center text-violet-700 font-medium">
                                   <DollarSign className="h-4 w-4" />
                                   <span>${service.price}</span>
                                 </div>
                               </div>
-                              <p className="text-pink-600 text-sm mt-2 min-h-[40px]">{service.description}</p>
-                              <div className="mt-2 flex items-center text-pink-500">
+                              <p className="text-violet-600 text-sm mt-2 min-h-[40px]">{service.description}</p>
+                              <div className="mt-2 flex items-center text-violet-500">
                                 <Clock className="h-4 w-4 mr-1" />
                                 <span className="text-sm">{service.duration}</span>
                               </div>
@@ -413,13 +413,13 @@ const BookAppointment = () => {
                       </div>
 
                       {errors.service && (
-                        <div className="px-6 pb-4 text-red-500 text-sm">{errors.service}</div>
+                        <div className="px-6 pb-4 text-rose-500 text-sm">{errors.service}</div>
                       )}
 
-                      <div className="px-6 py-4 bg-gradient-to-r from-pink-50 to-rose-50 flex justify-end">
+                      <div className="px-6 py-4 bg-gradient-to-r from-violet-50 to-purple-50 flex justify-end">
                         <button
                           type="button"
-                          className="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-medium flex items-center hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg shadow-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                          className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-lg font-medium flex items-center hover:from-violet-700 hover:to-purple-700 transition-all shadow-lg shadow-purple-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                           onClick={goToNextStep}
                         >
                           Continue
@@ -433,22 +433,22 @@ const BookAppointment = () => {
                 {/* Step 2: Date & Time Selection */}
                 {step === 2 && (
                   <div className="space-y-8">
-                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100">
-                      <div className="p-6 border-b border-pink-100 bg-gradient-to-r from-pink-50 to-rose-50">
-                        <h3 className="text-2xl font-semibold text-pink-900">Choose Date & Time</h3>
-                        <p className="text-pink-600 mt-1">Select when you'd like to book your {selectedService?.name}</p>
+                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100">
+                      <div className="p-6 border-b border-violet-100 bg-gradient-to-r from-violet-50 to-purple-50">
+                        <h3 className="text-2xl font-semibold text-violet-900">Choose Date & Time</h3>
+                        <p className="text-violet-600 mt-1">Select when you'd like to book your {selectedService?.name}</p>
                       </div>
 
                       {/* Calendar & Time Grid */}
                       <div className="p-6">
                         <div className="mb-8">
-                          <h4 className="text-lg font-medium text-pink-900 mb-3">Select Date</h4>
+                          <h4 className="text-lg font-medium text-violet-900 mb-3">Select Date</h4>
                           
                           {/* Calendar */}
-                          <div className="bg-white border border-pink-100 rounded-lg p-4 shadow-sm">
+                          <div className="bg-white border border-violet-100 rounded-lg p-4 shadow-sm">
                             <div className="grid grid-cols-7 gap-1 text-center mb-2">
                               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                                <div key={day} className="font-medium text-pink-500 text-sm py-1">
+                                <div key={day} className="font-medium text-violet-500 text-sm py-1">
                                   {day}
                                 </div>
                               ))}
@@ -460,10 +460,10 @@ const BookAppointment = () => {
                                   key={index}
                                   className={`h-12 flex items-center justify-center rounded-md transition-all ${
                                     day.date === selectedDate
-                                      ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white font-medium shadow-lg shadow-pink-200' 
+                                      ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white font-medium shadow-lg shadow-purple-200' 
                                       : day.available 
-                                        ? 'hover:bg-pink-50 cursor-pointer'
-                                        : 'text-pink-300'
+                                        ? 'hover:bg-violet-50 cursor-pointer'
+                                        : 'text-violet-300'
                                   } ${!day.available && 'pointer-events-none'}`}
                                   onClick={() => day.available && setSelectedDate(day.date)}
                                 >
@@ -475,7 +475,7 @@ const BookAppointment = () => {
                         </div>
 
                         <div>
-                          <h4 className="text-lg font-medium text-pink-900 mb-3">Select Time</h4>
+                          <h4 className="text-lg font-medium text-violet-900 mb-3">Select Time</h4>
                           
                           {selectedDate ? (
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -487,8 +487,8 @@ const BookAppointment = () => {
                                   whileTap={{ scale: 0.95 }}
                                   className={`py-3 rounded-lg text-sm font-medium transition-all ${
                                     selectedTime === time
-                                      ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-200'
-                                      : 'bg-white text-pink-700 hover:bg-pink-50 border border-pink-100'
+                                      ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-purple-200'
+                                      : 'bg-white text-violet-700 hover:bg-violet-50 border border-violet-100'
                                   }`}
                                   onClick={() => setSelectedTime(time)}
                                 >
@@ -497,21 +497,21 @@ const BookAppointment = () => {
                               ))}
                             </div>
                           ) : (
-                            <div className="text-center py-8 text-pink-500">
+                            <div className="text-center py-8 text-violet-500">
                               Please select a date first
                             </div>
                           )}
                         </div>
 
                         {errors.datetime && (
-                          <div className="mt-4 text-red-500 text-sm">{errors.datetime}</div>
+                          <div className="mt-4 text-rose-500 text-sm">{errors.datetime}</div>
                         )}
                       </div>
 
-                      <div className="px-6 py-4 bg-gradient-to-r from-pink-50 to-rose-50 flex justify-between">
+                      <div className="px-6 py-4 bg-gradient-to-r from-violet-50 to-purple-50 flex justify-between">
                         <button
                           type="button"
-                          className="px-6 py-3 bg-white border border-pink-200 text-pink-700 rounded-lg font-medium flex items-center hover:bg-pink-50 transition-all focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                          className="px-6 py-3 bg-white border border-violet-200 text-violet-700 rounded-lg font-medium flex items-center hover:bg-violet-50 transition-all focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                           onClick={goToPreviousStep}
                         >
                           <ChevronLeft className="mr-2 h-5 w-5" />
@@ -519,7 +519,7 @@ const BookAppointment = () => {
                         </button>
                         <button
                           type="button"
-                          className="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-medium flex items-center hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg shadow-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                          className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-lg font-medium flex items-center hover:from-violet-700 hover:to-purple-700 transition-all shadow-lg shadow-purple-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                           onClick={goToNextStep}
                         >
                           Continue
@@ -530,29 +530,29 @@ const BookAppointment = () => {
 
                     {/* Booking Summary */}
                     {selectedService && selectedDate && (
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100">
-                        <div className="p-5 border-b border-pink-100">
-                          <h3 className="text-lg font-semibold text-pink-900">Booking Summary</h3>
+                      <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100">
+                        <div className="p-5 border-b border-violet-100">
+                          <h3 className="text-lg font-semibold text-violet-900">Booking Summary</h3>
                         </div>
                         <div className="p-5 space-y-3">
                           <div className="flex items-start">
-                            <div className="bg-pink-100 p-2 rounded-md text-pink-600 mr-3">
+                            <div className="bg-violet-100 p-2 rounded-md text-violet-600 mr-3">
                               <Gift size={20} />
                             </div>
                             <div>
-                              <p className="font-medium text-pink-900">{selectedService.name}</p>
-                              <p className="text-pink-600 text-sm">{selectedService.duration} - ${selectedService.price}</p>
+                              <p className="font-medium text-violet-900">{selectedService.name}</p>
+                              <p className="text-violet-600 text-sm">{selectedService.duration} - ${selectedService.price}</p>
                             </div>
                           </div>
                           
                           {selectedDate && (
                             <div className="flex items-start">
-                              <div className="bg-pink-100 p-2 rounded-md text-pink-600 mr-3">
+                              <div className="bg-violet-100 p-2 rounded-md text-violet-600 mr-3">
                                 <Calendar size={20} />
                               </div>
                               <div>
-                                <p className="font-medium text-pink-900">{formatDisplayDate(selectedDate)}</p>
-                                {selectedTime && <p className="text-pink-600 text-sm">at {selectedTime}</p>}
+                                <p className="font-medium text-violet-900">{formatDisplayDate(selectedDate)}</p>
+                                {selectedTime && <p className="text-violet-600 text-sm">at {selectedTime}</p>}
                               </div>
                             </div>
                           )}
@@ -565,25 +565,25 @@ const BookAppointment = () => {
                 {/* Step 3: Personal Information */}
                 {step === 3 && (
                   <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100">
-                      <div className="p-6 border-b border-pink-100 bg-gradient-to-r from-pink-50 to-rose-50">
-                        <h3 className="text-2xl font-semibold text-pink-900">Your Information</h3>
-                        <p className="text-pink-600 mt-1">Please provide your contact details to complete the booking</p>
+                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100">
+                      <div className="p-6 border-b border-violet-100 bg-gradient-to-r from-violet-50 to-purple-50">
+                        <h3 className="text-2xl font-semibold text-violet-900">Your Information</h3>
+                        <p className="text-violet-600 mt-1">Please provide your contact details to complete the booking</p>
                       </div>
                       
                       <div className="p-6 space-y-5">
                         <div>
-                          <label className="block text-sm font-medium text-pink-700 mb-2">
+                          <label className="block text-sm font-medium text-violet-700 mb-2">
                             Full Name
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                              <User className="h-5 w-5 text-pink-400" />
+                              <User className="h-5 w-5 text-violet-400" />
                             </div>
                             <input
                               type="text"
-                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-pink-500 focus:border-pink-500 ${
-                                errors.name ? 'border-red-300 bg-red-50' : 'border-pink-200'
+                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 ${
+                                errors.name ? 'border-rose-300 bg-rose-50' : 'border-violet-200'
                               }`}
                               placeholder="John Doe"
                               value={formData.name}
@@ -591,22 +591,22 @@ const BookAppointment = () => {
                             />
                           </div>
                           {errors.name && (
-                            <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                            <p className="mt-1 text-sm text-rose-500">{errors.name}</p>
                           )}
                         </div>
                         
                         <div>
-                          <label className="block text-sm font-medium text-pink-700 mb-2">
+                          <label className="block text-sm font-medium text-violet-700 mb-2">
                             Email Address
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                              <Mail className="h-5 w-5 text-pink-400" />
+                              <Mail className="h-5 w-5 text-violet-400" />
                             </div>
                             <input
                               type="email"
-                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-pink-500 focus:border-pink-500 ${
-                                errors.email ? 'border-red-300 bg-red-50' : 'border-pink-200'
+                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 ${
+                                errors.email ? 'border-rose-300 bg-rose-50' : 'border-violet-200'
                               }`}
                               placeholder="your@email.com"
                               value={formData.email}
@@ -614,22 +614,22 @@ const BookAppointment = () => {
                             />
                           </div>
                           {errors.email && (
-                            <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                            <p className="mt-1 text-sm text-rose-500">{errors.email}</p>
                           )}
                         </div>
                         
                         <div>
-                          <label className="block text-sm font-medium text-pink-700 mb-2">
+                          <label className="block text-sm font-medium text-violet-700 mb-2">
                             Phone Number
                           </label>
                           <div className="relative">
                             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                              <Phone className="h-5 w-5 text-pink-400" />
+                              <Phone className="h-5 w-5 text-violet-400" />
                             </div>
                             <input
                               type="tel"
-                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-pink-500 focus:border-pink-500 ${
-                                errors.phone ? 'border-red-300 bg-red-50' : 'border-pink-200'
+                              className={`w-full border rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-violet-500 focus:border-violet-500 ${
+                                errors.phone ? 'border-rose-300 bg-rose-50' : 'border-violet-200'
                               }`}
                               placeholder="(123) 456-7890"
                               value={formData.phone}
@@ -637,20 +637,20 @@ const BookAppointment = () => {
                             />
                           </div>
                           {errors.phone && (
-                            <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                            <p className="mt-1 text-sm text-rose-500">{errors.phone}</p>
                           )}
                         </div>
                         
                         <div>
-                          <label className="block text-sm font-medium text-pink-700 mb-2">
+                          <label className="block text-sm font-medium text-violet-700 mb-2">
                             Special Requests (Optional)
                           </label>
                           <div className="relative">
                             <div className="absolute top-3 left-3">
-                              <MessageSquare className="h-5 w-5 text-pink-400" />
+                              <MessageSquare className="h-5 w-5 text-violet-400" />
                             </div>
                             <textarea
-                              className="w-full border border-pink-200 rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+                              className="w-full border border-violet-200 rounded-lg pl-10 px-4 py-3 focus:ring-2 focus:ring-violet-500 focus:border-violet-500"
                               rows="3"
                               placeholder="Any specific areas you'd like us to focus on?"
                               value={formData.notes}
@@ -660,10 +660,10 @@ const BookAppointment = () => {
                         </div>
                       </div>
                       
-                      <div className="px-6 py-4 bg-gradient-to-r from-pink-50 to-rose-50 flex justify-between">
+                      <div className="px-6 py-4 bg-gradient-to-r from-violet-50 to-purple-50 flex justify-between">
                         <button
                           type="button"
-                          className="px-6 py-3 bg-white border border-pink-200 text-pink-700 rounded-lg font-medium flex items-center hover:bg-pink-50 transition-all focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                          className="px-6 py-3 bg-white border border-violet-200 text-violet-700 rounded-lg font-medium flex items-center hover:bg-violet-50 transition-all focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                           onClick={goToPreviousStep}
                         >
                           <ChevronLeft className="mr-2 h-5 w-5" />
@@ -672,7 +672,7 @@ const BookAppointment = () => {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className={`px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-medium flex items-center hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg shadow-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 ${
+                          className={`px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-lg font-medium flex items-center hover:from-violet-700 hover:to-purple-700 transition-all shadow-lg shadow-purple-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2 ${
                             isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
                           }`}
                         >
@@ -711,28 +711,28 @@ const BookAppointment = () => {
                     </div>
                     
                     {/* Booking Summary */}
-                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100">
-                      <div className="p-5 border-b border-pink-100">
-                        <h3 className="text-lg font-semibold text-pink-900">Booking Summary</h3>
+                    <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100">
+                      <div className="p-5 border-b border-violet-100">
+                        <h3 className="text-lg font-semibold text-violet-900">Booking Summary</h3>
                       </div>
                       <div className="p-5 space-y-3">
                         <div className="flex items-start">
-                          <div className="bg-pink-100 p-2 rounded-md text-pink-600 mr-3">
+                          <div className="bg-violet-100 p-2 rounded-md text-violet-600 mr-3">
                             <Gift size={20} />
                           </div>
                           <div>
-                            <p className="font-medium text-pink-900">{selectedService.name}</p>
-                            <p className="text-pink-600 text-sm">{selectedService.duration} - ${selectedService.price}</p>
+                            <p className="font-medium text-violet-900">{selectedService.name}</p>
+                            <p className="text-violet-600 text-sm">{selectedService.duration} - ${selectedService.price}</p>
                           </div>
                         </div>
                         
                         <div className="flex items-start">
-                          <div className="bg-pink-100 p-2 rounded-md text-pink-600 mr-3">
+                          <div className="bg-violet-100 p-2 rounded-md text-violet-600 mr-3">
                             <Calendar size={20} />
                           </div>
                           <div>
-                            <p className="font-medium text-pink-900">{formatDisplayDate(selectedDate)}</p>
-                            <p className="text-pink-600 text-sm">at {selectedTime}</p>
+                            <p className="font-medium text-violet-900">{formatDisplayDate(selectedDate)}</p>
+                            <p className="text-violet-600 text-sm">at {selectedTime}</p>
                           </div>
                         </div>
                       </div>
@@ -742,52 +742,52 @@ const BookAppointment = () => {
 
                 {/* Step 4: Confirmation */}
                 {step === 4 && (
-                  <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-pink-100 text-center p-8">
+                  <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-xl overflow-hidden border border-violet-100 text-center p-8">
                     <div className="mb-6 flex justify-center">
-                      <div className="h-20 w-20 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center">
+                      <div className="h-20 w-20 bg-gradient-to-r from-violet-600 to-purple-600 rounded-full flex items-center justify-center">
                         <Check className="h-10 w-10 text-white" />
                       </div>
                     </div>
                     
-                    <h3 className="text-2xl font-bold text-pink-900 mb-2">Booking Confirmed!</h3>
-                    <p className="text-pink-600 mb-6">
+                    <h3 className="text-2xl font-bold text-violet-900 mb-2">Booking Confirmed!</h3>
+                    <p className="text-violet-600 mb-6">
                       Thank you, {formData.name}. Your appointment has been successfully booked.
                     </p>
                     
-                    <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg p-6 max-w-md mx-auto mb-6">
+                    <div className="bg-gradient-to-r from-violet-50 to-purple-50 rounded-lg p-6 max-w-md mx-auto mb-6">
                       <div className="text-left space-y-4">
                         <div>
-                          <p className="text-sm text-pink-500">Service</p>
-                          <p className="font-medium text-pink-900">{selectedService.name} ({selectedService.duration})</p>
+                          <p className="text-sm text-violet-500">Service</p>
+                          <p className="font-medium text-violet-900">{selectedService.name} ({selectedService.duration})</p>
                         </div>
                         
                         <div>
-                          <p className="text-sm text-pink-500">Date & Time</p>
-                          <p className="font-medium text-pink-900">{formatDisplayDate(selectedDate)} at {selectedTime}</p>
+                          <p className="text-sm text-violet-500">Date & Time</p>
+                          <p className="font-medium text-violet-900">{formatDisplayDate(selectedDate)} at {selectedTime}</p>
                         </div>
                         
                         <div>
-                          <p className="text-sm text-pink-500">Price</p>
-                          <p className="font-medium text-pink-900">${selectedService.price}</p>
+                          <p className="text-sm text-violet-500">Price</p>
+                          <p className="font-medium text-violet-900">${selectedService.price}</p>
                         </div>
                         
-                        <div className="pt-4 border-t border-pink-200">
-                          <p className="text-sm text-pink-500">Confirmation sent to</p>
-                          <p className="font-medium text-pink-900">{formData.email}</p>
-                          <p className="font-medium text-pink-900">{formData.phone}</p>
+                        <div className="pt-4 border-t border-violet-200">
+                          <p className="text-sm text-violet-500">Confirmation sent to</p>
+                          <p className="font-medium text-violet-900">{formData.email}</p>
+                          <p className="font-medium text-violet-900">{formData.phone}</p>
                         </div>
                       </div>
                     </div>
                     
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                       <button 
-                        className="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-medium hover:from-pink-600 hover:to-rose-600 transition-all shadow-lg shadow-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                        className="px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 text-white rounded-lg font-medium hover:from-violet-700 hover:to-purple-700 transition-all shadow-lg shadow-purple-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                         onClick={() => window.location.reload()}
                       >
                         Book Another Appointment
                       </button>
                       <button 
-                        className="px-6 py-3 bg-white border border-pink-200 text-pink-700 rounded-lg font-medium hover:bg-pink-50 transition-all focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                        className="px-6 py-3 bg-white border border-violet-200 text-violet-700 rounded-lg font-medium hover:bg-violet-50 transition-all focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2"
                       >
                         Add to Calendar
                       </button>
