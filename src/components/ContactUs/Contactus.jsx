@@ -1,242 +1,185 @@
-import Header from './../Header.jsx';
-import Footer from './../Footer.jsx';
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import React from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Header from "../Header";
+import Footer from "../Footer";
 
-const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
-  
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    success: false,
-    message: ''
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
+export default function ContactUs() {
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Simuloni një kërkesë API këtu, nëse dëshironi.
-    // Për shembull, mund të përdorni fetch ose axios për të dërguar të dhënat në backend.
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const values = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
 
-    setFormStatus({
-      submitted: true,
-      success: true,
-      message: 'Thank you for your message! We will get back to you soon.'
-    });
-    
-    // Rinisni formularin pas submit-it.
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const responseData = await response.json();
+      console.log("Server response:", responseData);
+
+      if (!response.ok) {
+        throw new Error(responseData.error || "Failed to send message");
+      }
+
+      alert("Message sent successfully!");
+      form.reset();
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert(`Failed to send message: ${error}`);
+    }
   };
 
   return (
     <>
     <Header/>
-    <div className="pt-24 pb-16">
-      {/* Section e parë: Titulli / Intro */}
-      <section className="section bg-primary-50">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h1 className="heading-lg mb-6 text-primary-800">Get in Touch</h1>
-            <p className="text-lg text-gray-700 mb-8">
-              Have a question or want to work together? We'd love to hear from you.
-              Fill out the form below and we'll get back to you as soon as possible.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        {/* HEADER */}
+        <div className="text-center mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-pink-800 mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            Have questions or want to collaborate? We’d love to hear from you.
+            Fill out the form below or reach out directly using our contact
+            information.
+          </p>
         </div>
-      </section>
 
-      {/* Section e dytë: Formulari dhe kontaktet */}
-      <section className="section bg-white">
-        <div className="container">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Contact Form */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="lg:col-span-2"
+        {/* CONTENT */}
+        {/* 
+          - Moved from `lg:grid-cols-2` to `md:grid-cols-2` so two-column layout
+            begins at medium screens (~768px) instead of large (~1024px).
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* FORM */}
+          <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block font-medium mb-1">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md 
+                             focus:outline-none focus:ring-2 focus:ring-blue-500 
+                             shadow-sm"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block font-medium mb-1">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md 
+                             focus:outline-none focus:ring-2 focus:ring-blue-500 
+                             shadow-sm"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block font-medium mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="How can we help you?"
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md 
+                             min-h-[150px] focus:outline-none focus:ring-2 
+                             focus:ring-blue-500 shadow-sm"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-pink-800 text-white font-semibold 
+                           px-4 py-2 rounded-md transition duration-300 
+                           shadow-md hover:bg-pink-300 focus:outline-none 
+                           focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
               >
-                <div className="bg-white rounded-lg shadow-lg p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {/* Name */}
-                      <div>
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md 
-                                     focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        />
-                      </div>
+                Send Message
+              </button>
+            </form>
+          </div>
 
-                      {/* Email */}
-                      <div>
-                        <label
-                          htmlFor="email"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md 
-                                     focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {/* Phone */}
-                      <div>
-                        <label
-                          htmlFor="phone"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Phone (optional)
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md 
-                                     focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        />
-                      </div>
-
-                      {/* Subject */}
-                      <div>
-                        <label
-                          htmlFor="subject"
-                          className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                          Subject
-                        </label>
-                        <input
-                          type="text"
-                          id="subject"
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md 
-                                     focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={5}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md 
-                                   focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                      />
-                    </div>
-
-                    {/* Submit Button */}
-                    <div>
-                      <button
-                        type="submit"
-                        className="bg-primary-500 text-white py-2 px-6 rounded-md 
-                                   hover:bg-primary-600 transition-colors"
-                      >
-                        Send Message
-                      </button>
-                    </div>
-
-                    {/* Success/Failure Message */}
-                    {formStatus.submitted && (
-                      <div
-                        className={`mt-4 p-4 rounded ${
-                          formStatus.success
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
-                        }`}
-                      >
-                        {formStatus.message}
-                      </div>
-                    )}
-                  </form>
+          {/* CONTACT INFO */}
+          <div className="space-y-8">
+            <div className="bg-white rounded-lg shadow-md p-6 space-y-6">
+              <div className="flex items-start space-x-4">
+                <Mail className="w-7 h-7 text-blue-950 mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg">Email</h3>
+                  <p className="text-gray-600">ThermenSpasupport@gmail.com</p>
+                  <p className="text-gray-600">ThermenSpainfo@gmail.com</p>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Contact Info (Optional 3rd Column) */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="bg-white rounded-lg shadow-lg p-8 h-fit"
-              >
-                <h2 className="text-xl font-bold mb-4 text-primary-800">Our Office</h2>
-                <p className="text-gray-700 mb-2">
-                  1234 Wellness Ave<br />
-                  City, State 12345
-                </p>
-                <p className="text-gray-700 mb-2">Phone: (123) 456-7890</p>
-                <p className="text-gray-700">Email: info@wellnesscenter.com</p>
-              </motion.div>
+              <div className="flex items-start space-x-4">
+                <Phone className="w-7 h-7 text-blue-950 mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg">Phone</h3>
+                  <p className="text-gray-600">+383 44 123 456</p>
+                  <p className="text-gray-600">+383 44 789 012</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <MapPin className="w-7 h-7 text-blue-950 mt-1" />
+                <div>
+                  <h3 className="font-semibold text-lg">Address</h3>
+                  <p className="text-gray-600">
+                    Rr. Kolegji UBT
+                    <br />
+                    Prishtinë, 10000
+                    <br />
+                    Kosovë
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* BUSINESS HOURS */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="font-semibold text-lg mb-4">Business Hours</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Monday - Friday</span>
+                  <span>9:00 AM - 6:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Saturday</span>
+                  <span>10:00 AM - 4:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Sunday</span>
+                  <span>Closed</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div> 
     </div>
     <Footer/>
     </>
   );
-};
-
-export default ContactUs;
+}

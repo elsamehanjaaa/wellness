@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Heart } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -32,7 +32,7 @@ const Footer = () => {
   </div>
 
   {/* Quick Links */}
-  <div className="flex flex-col h-full justify-start">
+  <div className="flex flex-col h-full justify-center ml-30">
     <h3 className="text-lg text-pink-800 font-semibold mb-4">Quick Links</h3>
     <ul className="space-y-2 text-sm text-black">
       <li><a href="/" className="hover:underline">Home</a></li>
@@ -43,7 +43,7 @@ const Footer = () => {
   </div>
 
   {/* Contact Info */}
-  <div className="flex flex-col h-full justify-start">
+  <div className="flex flex-col h-full justify-center">
     <h3 className="text-lg text-pink-800 font-semibold mb-4">Contact</h3>
     <ul className="space-y-3 text-sm text-black">
       <li className="flex items-start gap-2">
@@ -52,17 +52,22 @@ const Footer = () => {
       </li>
       <li className="flex items-start gap-2">
         <Phone className="w-4 h-4 mt-1 text-black" />
-        +31 02–123–456–789
+        +1 02–123–456–789
+      </li>
+      <li className="flex items-start gap-2">
+        <Phone className="w-4 h-4 mt-1 text-black" />
+        +1 03–123–456–789
       </li>
       <li className="flex items-start gap-2">
         <Mail className="w-4 h-4 mt-1 text-black" />
         contact@thermenspa.com
       </li>
+    
     </ul>
   </div>
 
   {/* Newsletter */}
-  <div className="flex flex-col h-full justify-start">
+  <div className="flex flex-col h-full justify-center">
     <h3 className="text-lg text-pink-800 font-semibold mb-4">Stay Connected</h3>
     <p className="text-sm text-black mb-4">
       Subscribe to receive exclusive offers and wellness tips.

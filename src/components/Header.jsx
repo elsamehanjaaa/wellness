@@ -38,7 +38,7 @@ export function Header() {
           <a href="/" className="text-wellness-dark hover:text-opacity-70 transition-colors">Home</a>
           <a href="#about" className="text-wellness-dark hover:text-opacity-70 transition-colors">About</a>
           <a href="#testimonials" className="text-wellness-dark hover:text-opacity-70 transition-colors">Services</a>
-          <a href="#contact" className="text-wellness-dark hover:text-opacity-70 transition-colors">Contact</a>
+          <a href="/contactus" className="text-wellness-dark hover:text-opacity-70 transition-colors">Contact</a>
         </nav>
         <div className="hidden md:block">
           <a href="/bookappointment"  className="bg-wellness-lavender hover:bg-lavender ext-wellness-dark py-2 px-4 rounded">Book Appointment</a>
