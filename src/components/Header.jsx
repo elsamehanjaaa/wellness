@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Leaf, Sun, Moon } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Menu, X, Leaf, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
+import Image from 'next/image';
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -20,91 +21,52 @@ export function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-0 w-full border-b bg-gradient-to-br from-emerald-700 via-emerald-600 to-teal-500 backdrop-blur-md z-50 transition-all duration-200">
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="rounded-full bg-emerald-600 p-1.5 transition-colors group-hover:bg-emerald-700">
-                <Leaf className="h-5 w-5 text-white" aria-hidden="true" />
-              </div>
-              <span className="font-semibold text-xl tracking-tight text-white">
-                Thermen<span className="text-emerald-400">Spa</span>
-              </span>
-            </Link>
-          </div>
+    <header className="bg-pink-300 backdrop-blur-md py-4 sticky top-0 z-50 shadow-sm">
+      <div className="container mx-auto px-4 flex justify-between items-center">
+      <Link href="/" className="flex items-center">
+  <Image 
+    src="/logo3.png" 
+    alt="ThermenSpa Logo"
+    width={200} 
+    height={200}
+    className="mr-2"
+  />
+</Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className="px-1 py-2 text-sm font-medium transition hover:text-white text-emerald-100"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8">
+          <a href="/" className="text-wellness-dark hover:text-opacity-70 transition-colors">Home</a>
+          <a href="#about" className="text-wellness-dark hover:text-opacity-70 transition-colors">About</a>
+          <a href="#testimonials" className="text-wellness-dark hover:text-opacity-70 transition-colors">Services</a>
+          <a href="#contact" className="text-wellness-dark hover:text-opacity-70 transition-colors">Contact</a>
+        </nav>
+        <div className="hidden md:block">
+          <a href="/bookappointment"  className="bg-wellness-lavender hover:bg-lavender ext-wellness-dark py-2 px-4 rounded">Book Appointment</a>
+        </div>  
 
-          <div className="flex items-center gap-4">
-            <button
-              type="button"
-              className="relative rounded-md p-2 text-emerald-100 hover:bg-emerald-700/60"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute inset-0 m-auto h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </button>
-            <div className="hidden md:block">
-              <Link
-                href="/bookappointment"
-                className="inline-flex items-center justify-center rounded-md bg-emerald-600 text-sm font-medium text-white transition hover:bg-emerald-700 h-10 px-4 py-2"
-              >
-                Book Appointment
-              </Link>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md hover:bg-emerald-700/60 text-emerald-100 h-10 w-10 md:hidden"
-              onClick={toggleMenu}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-            >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
+        {/* Mobile menu button */}
+        <div className="md:hidden">
+          <button onClick={toggleMenu} className="text-wellness-dark p-2">
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-[300px] border-b border-emerald-800" : "max-h-0"
-        }`}
-      >
-        <nav className="container px-4 sm:px-6 lg:px-8 py-4 flex flex-col space-y-4">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.path}
-              className="text-emerald-100 hover:text-white transition font-medium py-2"
-              onClick={closeMenu}
-            >
-              {item.name}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-md bg-emerald-600 text-sm font-medium text-white transition hover:bg-emerald-700 h-10 px-4 py-2 w-full"
-            onClick={closeMenu}
-          >
-            Book Appointment
-          </Link>
-        </nav>
-      </div>
+      {isOpen && (
+        <div className="md:hidden bg-white py-4 px-4 absolute w-full shadow-md animate-fade-in">
+          <nav className="flex flex-col space-y-4">
+            <a href="#services" className="text-wellness-dark hover:text-opacity-70 transition-colors" onClick={toggleMenu}>Home</a>
+           <a href="#about" className="text-wellness-dark hover:text-opacity-70 transition-colors" onClick={toggleMenu}>About</a>
+            <a href="#services" className="text-wellness-dark hover:text-opacity-70 transition-colors" onClick={toggleMenu}>Services</a>
+            <a href="#contact" className="text-wellness-dark hover:text-opacity-70 transition-colors" onClick={toggleMenu}>Contact</a>
+            <button className="bg-wellness-lavender hover:bg-wellness-lavender/80 text-wellness-dark w-full py-2 rounded">
+              Book Appointment
+            </button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
