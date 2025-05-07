@@ -36,13 +36,20 @@ export function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           <a href="/" className="text-wellness-dark hover:text-opacity-70 transition-colors">Home</a>
-          <a href="#about" className="text-wellness-dark hover:text-opacity-70 transition-colors">About</a>
+          <a href="/aboutus" className="text-wellness-dark hover:text-opacity-70 transition-colors">About</a>
           <a href="#testimonials" className="text-wellness-dark hover:text-opacity-70 transition-colors">Services</a>
           <a href="/contactus" className="text-wellness-dark hover:text-opacity-70 transition-colors">Contact</a>
         </nav>
-        <div className="hidden md:block">
-          <a href="/bookappointment"  className="bg-wellness-lavender hover:bg-lavender ext-wellness-dark py-2 px-4 rounded">Book Appointment</a>
-        </div>  
+        <a
+                href="/bookappointment"
+                type="submit"
+                className=" bg-pink-800 text-white font-semibold 
+                           px-4 py-2 rounded-md transition duration-100 
+                           shadow-md hover:bg-pink-400 focus:outline-none 
+                           focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              >
+                Book Appointment
+              </a>
 
 
         {/* Mobile menu button */}

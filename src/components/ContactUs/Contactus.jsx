@@ -66,7 +66,7 @@ export default function ContactUs() {
           <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block font-medium mb-1">
+                <label htmlFor="name" className="block font-medium mb-1 text-black">
                   Name
                 </label>
                 <input
@@ -77,11 +77,11 @@ export default function ContactUs() {
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md 
                              focus:outline-none focus:ring-2 focus:ring-blue-500 
-                             shadow-sm"
+                             shadow-sm text-gray-600"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block font-medium mb-1">
+                <label htmlFor="email" className="block font-medium mb-1 text-black">
                   Email
                 </label>
                 <input
@@ -92,11 +92,11 @@ export default function ContactUs() {
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md 
                              focus:outline-none focus:ring-2 focus:ring-blue-500 
-                             shadow-sm"
+                             shadow-sm text-gray-600"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block font-medium mb-1">
+                <label htmlFor="message" className="block font-medium mb-1 text-black">
                   Message
                 </label>
                 <textarea
@@ -106,7 +106,7 @@ export default function ContactUs() {
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-md 
                              min-h-[150px] focus:outline-none focus:ring-2 
-                             focus:ring-blue-500 shadow-sm"
+                             focus:ring-blue-500 shadow-sm text-gray-600"
                 />
               </div>
               <button
@@ -127,7 +127,7 @@ export default function ContactUs() {
               <div className="flex items-start space-x-4">
                 <Mail className="w-7 h-7 text-blue-950 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-lg">Email</h3>
+                  <h3 className="font-semibold text-lg text-black">Email</h3>
                   <p className="text-gray-600">ThermenSpasupport@gmail.com</p>
                   <p className="text-gray-600">ThermenSpainfo@gmail.com</p>
                 </div>
@@ -136,7 +136,7 @@ export default function ContactUs() {
               <div className="flex items-start space-x-4">
                 <Phone className="w-7 h-7 text-blue-950 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-lg">Phone</h3>
+                  <h3 className="font-semibold text-lg text-black">Phone</h3>
                   <p className="text-gray-600">+383 44 123 456</p>
                   <p className="text-gray-600">+383 44 789 012</p>
                 </div>
@@ -145,7 +145,7 @@ export default function ContactUs() {
               <div className="flex items-start space-x-4">
                 <MapPin className="w-7 h-7 text-blue-950 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-lg">Address</h3>
+                  <h3 className="font-semibold text-lg text-black">Address</h3>
                   <p className="text-gray-600">
                     Rr. Kolegji UBT
                     <br />
@@ -159,19 +159,19 @@ export default function ContactUs() {
 
             {/* BUSINESS HOURS */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="font-semibold text-lg mb-4">Business Hours</h3>
+              <h3 className="font-semibold text-lg mb-4 text-black">Business Hours</h3>
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
+                  <span className="text-gray-600">9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Saturday</span>
-                  <span>10:00 AM - 4:00 PM</span>
+                  <span className="text-gray-600">10:00 AM - 4:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Sunday</span>
-                  <span>Closed</span>
+                  <span className="text-gray-600">Closed</span>
                 </div>
               </div>
             </div>
