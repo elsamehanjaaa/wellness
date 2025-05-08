@@ -37,7 +37,7 @@ export function Header() {
         <nav className="hidden md:flex space-x-8">
           <a href="/" className="text-wellness-dark hover:text-opacity-70 transition-colors">Home</a>
           <a href="/aboutus" className="text-wellness-dark hover:text-opacity-70 transition-colors">About</a>
-          <a href="#testimonials" className="text-wellness-dark hover:text-opacity-70 transition-colors">Services</a>
+          <a href="/services" className="text-wellness-dark hover:text-opacity-70 transition-colors">Services</a>
           <a href="/contactus" className="text-wellness-dark hover:text-opacity-70 transition-colors">Contact</a>
         </nav>
         <a
