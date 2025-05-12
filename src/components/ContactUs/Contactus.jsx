@@ -128,8 +128,7 @@ export default function ContactUs() {
                 <Mail className="w-7 h-7 text-blue-950 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg text-black">Email</h3>
-                  <p className="text-gray-600">ThermenSpasupport@gmail.com</p>
-                  <p className="text-gray-600">ThermenSpainfo@gmail.com</p>
+                  <p className="text-gray-600">contact@thermenspa.com</p>
                 </div>
               </div>
 
@@ -137,8 +136,8 @@ export default function ContactUs() {
                 <Phone className="w-7 h-7 text-blue-950 mt-1" />
                 <div>
                   <h3 className="font-semibold text-lg text-black">Phone</h3>
-                  <p className="text-gray-600">+383 44 123 456</p>
-                  <p className="text-gray-600">+383 44 789 012</p>
+                  <p className="text-gray-600">+1 02–123–456–789</p>
+                  <p className="text-gray-600">+1 03–123–456–789</p>
                 </div>
               </div>
 
@@ -147,11 +146,11 @@ export default function ContactUs() {
                 <div>
                   <h3 className="font-semibold text-lg text-black">Address</h3>
                   <p className="text-gray-600">
-                    Rr. Kolegji UBT
+                  Kingston Street 3201,
                     <br />
-                    Prishtinë, 10000
+                    New Jersey,
                     <br />
-                    Kosovë
+                   NY
                   </p>
                 </div>
               </div>
@@ -171,7 +170,7 @@ export default function ContactUs() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Sunday</span>
-                  <span className="text-gray-600">Closed</span>
+                  <span className="text-gray-600 font-semibold">Closed</span>
                 </div>
               </div>
             </div>

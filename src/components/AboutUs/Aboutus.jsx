@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Flower, Heart, Leaf, Sparkles } from 'lucide-react';
+import { Flower, Heart, Leaf, Sparkles, Star } from 'lucide-react';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -16,46 +16,56 @@ const About = () => {
 
   const teamMembers = [
     {
-      name: "Dr. Emma Winters",
-      position: "Founder & Wellness Director",
-      bio: "Dr. Emma holds a Ph.D. in Holistic Medicine and brings over 15 years of experience in wellness therapy. She founded ThemenSpa with a vision to create a sanctuary where traditional healing meets modern wellness techniques.",
-      image: "https://images.pexels.com/photos/5199149/pexels-photo-5199149.jpeg",
+      id: 1,
+      name: "Sarah Johnson",
+      position: "Lead Massage Therapist",
+      bio: "Sarah has over 15 years of experience in therapeutic massage and specializes in deep tissue and Swedish techniques. She's dedicated to helping clients find relief from chronic pain and stress.",
+      image: "https://images.pexels.com/photos/5999817/pexels-photo-5999817.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
+      id: 2,
       name: "Michael Chen",
-      position: "Master Massage Therapist",
-      bio: "With expertise in Swedish, Thai, and deep tissue massage, Michael specializes in creating personalized therapy sessions that address both physical and mental wellness. His approach integrates Eastern and Western techniques.",
-      image: "https://images.pexels.com/photos/1722198/pexels-photo-1722198.jpeg",
+      position: "Holistic Wellness Coach",
+      bio: "Michael blends Eastern and Western wellness practices to create personalized health plans. With certifications in nutrition, meditation, and yoga, he helps clients achieve balance in mind and body.",
+      image: "https://images.pexels.com/photos/6749773/pexels-photo-6749773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
-      name: "Sofia Rodriguez",
-      position: "Aromatherapist & Skincare Specialist",
-      bio: "Sofia brings her knowledge of botanical ingredients and essential oils to create custom treatments that enhance natural beauty while promoting relaxation. Her facial treatments have been recognized in wellness publications.",
-      image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
+      id: 3,
+      name: "Emma Rodriguez",
+      position: "Skincare Specialist",
+      bio: "Emma is a licensed esthetician with expertise in advanced facial treatments and skin rejuvenation. She's passionate about helping clients achieve their healthiest skin through customized care.",
+      image: "https://images.pexels.com/photos/6663467/pexels-photo-6663467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      id: 4,
+      name: "David Williams",
+      position: "Aromatherapy Expert",
+      bio: "David is certified in clinical aromatherapy and creates custom essential oil blends for therapeutic benefits. His knowledge of plant medicine helps clients find natural solutions for wellness.",
+      image: "https://images.pexels.com/photos/7360504/pexels-photo-7360504.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ];
 
   const testimonials = [
     {
-      quote: "ThemenSpa transformed my wellness journey. The thermal baths combined with their massage therapy created the most rejuvenating experience I've ever had.",
-      author: "Catherine L.",
-      location: "New York, NY",
-      image: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=100",
+      name: "Sarah Johnson",
+      role: "Loyal Client",
+      quote: "The signature massage completely transformed my chronic shoulder pain. The therapists are incredibly knowledgeable and attentive to every detail.",
       rating: 5,
+      image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
-      quote: "I visit ThemenSpa monthly for their wellness packages. Their holistic approach has significantly improved my chronic back pain and sleep quality.",
-      author: "Marcus T.",
-      location: "Chicago, IL",
-      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=100",
+      name: "Michael Chen",
+      role: "Monthly Member",
+      quote: "As someone who travels constantly for work, their deep tissue massage is the only thing that keeps me functioning. Absolute lifesaver!",
       rating: 5,
+      image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     },
     {
-      quote: "The attention to detail and personalized care at ThemenSpa is unmatched. Every visit feels like they've crafted the experience just for me.",
-      author: "Jennifer K.",
-      location: "Boston, MA",
-      image: "https://images.pexels.com/photos/1587009/pexels-photo-1587009.jpeg?auto=compress&cs=tinysrgb&w=100",
+      name: "Emma Rodriguez",
+      role: "New Client",
+      quote: "From the moment I walked in, I felt welcomed and cared for. The prenatal massage was exactly what I needed during my third trimester.",
       rating: 5,
+      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ];
 
@@ -167,144 +177,100 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className=" py-16 bg-white "> 
-        <div className="container mx-auto px-4">
-  <div className="text-center mb-12">
-    <h2 className="text-3xl font-playfair font-semibold text-gray-800 mb-6">Meet Our Team</h2>
-    <div className="w-16 h-1 bg-spa-purple mx-auto mb-8"></div>
-    <p className="text-xl text-gray-600 max-w-2xl mx-auto font-lato">
-      Our experienced practitioners are dedicated to providing the highest quality wellness services.
-    </p>
-  </div>
+        <section className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-6">
+              Meet Our Team
+            </h2>
+            <div className="w-16 h-1 bg-spa-purple mx-auto mb-8"></div>
+            <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto font-lato leading-relaxed">
+              Our experienced practitioners are dedicated to providing the highest quality wellness services.
+            </p>
+          </div>
 
-  <div className="space-y-12">
-    {teamMembers.map((member, index) => (
-      <div 
-        key={index}
-        className={`flex flex-col md:flex-row gap-4 items-center ${
-          index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-        } animate-fade-in`}
-        style={{ animationDelay: `${index * 200}ms` }}
-      >
-        <div className="w-full md:w-1/3 flex justify-center">
-          <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg">
-            <img 
-              src={member.image} 
-              alt={member.name} 
-              className="w-full h-full object-cover"
-            />
+          <div className="space-y-16 md:space-y-24">
+            {teamMembers.map((member, index) => (
+              <div 
+                key={member.id}
+                className={`flex flex-col md:flex-row gap-6 items-center ${
+                  index % 2 !== 0 ? 'md:flex-row-reverse' : ''
+                } animate-fade-in`}
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="w-full md:w-1/3 flex justify-center">
+                  <div className="relative w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-105">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full md:w-2/3 px-4 text-center md:text-left">
+                  <h3 className="font-playfair text-2xl md:text-3xl font-semibold text-gray-800 mb-2">
+                    {member.name}
+                  </h3>
+                  <div className="w-16 h-0.5 bg-spa-purple md:mx-0 mx-auto mb-3"></div>
+                  <p className="text-spa-purple text-base md:text-lg font-medium mb-3 tracking-wide">
+                    {member.position}
+                  </p>
+                  <p className="text-gray-600 text-sm md:text-base leading-relaxed md:leading-loose">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="w-full md:w-2/3 px-2 md:px-4 text-center md:text-left">
-          <h3 className="font-playfair text-2xl md:text-3xl font-semibold text-gray-800 mb-1">
-            {member.name}
-          </h3>
-          <p className="text-spa-purple text-base md:text-lg font-medium mb-3 tracking-wide">
-            {member.position}
-          </p>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed md:leading-loose">
-            {member.bio}
-          </p>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
-
-</section>
-
+      </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-b from-pink-50 to-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-playfair font-semibold text-gray-800 mb-6">Client Stories</h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto font-lato">
-                Real experiences from our valued guests
+        <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-pink-800 uppercase tracking-wider font-medium">
+              Client Stories
+            </span>
+            <h2 className="text-3xl text-pink-900 font-bold md:text-4xl font-serif mt-4 mb-6">
+              What Our Guests Say
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                The experiences of our clients reflect our commitment to exceptional service and transformative wellness.
               </p>
             </div>
-            
-            <div className="max-w-4xl mx-auto">
-              <div className="relative h-[400px]">
-                {testimonials.map((testimonial, index) => (
-                  <div 
-                    key={index}
-                    className={`absolute inset-0 transition-all duration-500 transform ${
-                      index === activeTestimonial 
-                        ? "opacity-100 translate-x-0" 
-                        : "opacity-0 translate-x-8"
-                    }`}
-                    style={{ display: index === activeTestimonial ? 'block' : 'none' }}
-                  >
-                    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-                      <div className="flex justify-center mb-8">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Sparkles key={i} className="w-6 h-6 text-yellow-400 mr-1" />
-                        ))}
-                      </div>
-                      <p className="text-xl md:text-2xl text-gray-700 italic mb-8 font-playfair">
-                        "{testimonial.quote}"
-                      </p>
-                      <div className="flex items-center justify-center">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.author}
-                          className="w-16 h-16 rounded-full object-cover mr-4"
-                        />
-                        <div className="text-left">
-                          <p className="font-semibold text-lg text-gray-800">{testimonial.author}</p>
-                          <p className="text-spa-purple">{testimonial.location}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="flex justify-center mt-8 space-x-3">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === activeTestimonial 
-                        ? 'bg-spa-purple w-8' 
-                        : 'bg-gray-300 hover:bg-spa-purple/50'
-                    }`}
-                    aria-label={`View testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-spa-purple">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl md:text-5xl font-playfair font-semibold text-white mb-8">
-              Begin Your Wellness Journey
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-12 font-lato">
-              Experience the transformative power of our holistic treatments
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <a 
-                href="/book"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-spa-purple bg-white rounded-full hover:bg-pink-50 transition-colors duration-300"
-              >
-                Book Your Session
-              </a>
-              <a 
-                href="/services"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white border-2 border-white rounded-full hover:bg-white/10 transition-colors duration-300"
-              >
-                Explore Services
-              </a>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="flex mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} 
+                    />
+                  ))}
+                </div>
+                <blockquote className="text-gray-600 italic mb-6">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div className="flex items-center">
+                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                    <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-pink-900">{testimonial.name}</h4>
+                    <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
       </main>
       <Footer />
     </>
