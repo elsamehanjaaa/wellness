@@ -3,79 +3,58 @@ import { Clock, MapPin, Phone, Mail, Award, Users, Leaf, Star, Check } from 'luc
 import Header from '../Header';
 import Footer from '../Footer';
 import Image from 'next/image';
+import { useState } from 'react';
 
-const Services = () => {
+
+const ServicesPage = () => {
   const services = [
     {
-  
-      items: [
-        {
-          title: "Swedish Massage",
-          description: "A calming full-body massage using gentle strokes to boost circulation and ease muscle tension.",
-
-          image: "/services/swedishmassage.jpg"
-        },
-        {
-          title: "Deep Tissue Massage",
-          description: "Intensive pressure targets deeper muscle layers to relieve chronic aches and knots.",
-    
-          image: "/services/deeptissuemassage.webp"
-        },
-        {
-          title: "Hot Stone Massage",
-          description: "Smooth heated stones soothe muscles and promote deep relaxation throughout the body.",
-    
-          image: "/services/hotstonemassage.jpg"
-        },
-        {
-          title: "Aromatherapy Massage",
-          description: "A gentle massage enhanced with essential oils to support emotional and physical well-being.",
-   
-          image: "/services/aromatherapymassage.webp"
-        },
-        {
-          title: "Prenatal Massage",
-          description: "Soothing techniques tailored for pregnancy to ease discomfort and promote relaxation.",
-
-          image: "/services/Prenatalmassage.jpeg"
-        },
-        {
-          title: "Reflexology",
-          description: "Foot massage applying pressure to reflex zones to support the body’s natural healing.",
-
-          image: "/services/reflexologymassage.webp"
-        },
-        {
-          title: "Couples Massage",
-          description: "Enjoy a side-by-side massage experience with a partner in a serene, romantic setting.",
-          image: "/services/couplemassage.jpg"
-        },
-        {
-          title: "Sports Massage",
-          description: "Focused treatment to improve flexibility, relieve strain, and speed recovery for active individuals.",
-          image: "/services/sportsmassage.png"
-        },
-        {
-          title: "Thai Massage",
-          description: "An energizing therapy combining assisted stretching and acupressure for full-body rejuvenation.",
-          image: "/services/thaimassage.webp"
-        },
-        {
-          title: "Facial Massage",
-          description: "Gentle facial techniques that improve circulation, tone muscles, and promote a youthful glow.",
-          image: "/services/facialmassage.webp"
-        },
-        {
-          title: "Manicure",
-          description: "Nail shaping, cuticle care, exfoliation, hand massage, and polish for beautiful hands.",
-          image: "/services/manicure.jpg"
-        },
-        {
-          title: "Pedicure",
-          description: "Soothing foot soak, exfoliation, nail care, massage, and polish for smooth, refreshed feet.",
-          image: "/services/pedicure.jpg"
-        }
-      ]
+      title: "Deep Tissue Massage",
+      description: "A therapeutic massage targeting the deeper layers of muscle and connective tissue, perfect for chronic tension and pain relief.",
+      image: "https://images.pexels.com/photos/5240677/pexels-photo-5240677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$120",
+      duration: "60 minutes",
+      link: "/booking"
+    },
+    {
+      title: "Swedish Massage",
+      description: "A gentle, relaxing massage using long, flowing strokes to improve circulation and promote overall wellness and relaxation.",
+      image: "https://images.pexels.com/photos/3865570/pexels-photo-3865570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$90",
+      duration: "60 minutes",
+      link: "/booking"
+    },
+    {
+      title: "Hot Stone Therapy",
+      description: "Smooth, heated stones placed on key points of the body to melt away tension and promote deep relaxation.",
+      image: "https://images.pexels.com/photos/3865555/pexels-photo-3865555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$140",
+      duration: "75 minutes",
+      link: "/booking"
+    },
+    {
+      title: "Rejuvenating Facial",
+      description: "A customized facial treatment that cleanses, exfoliates, and nourishes the skin for a refreshed, radiant appearance.",
+      image: "https://images.pexels.com/photos/3997379/pexels-photo-3997379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$95",
+      duration: "45 minutes",
+      link: "/booking"
+    },
+    {
+      title: "Aromatherapy Massage",
+      description: "A therapeutic massage enhanced with essential oils to promote relaxation, reduce stress, and improve overall well-being.",
+      image: "https://images.pexels.com/photos/3757952/pexels-photo-3757952.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$110",
+      duration: "60 minutes",
+      link: "/booking"
+    },
+    {
+      title: "Body Scrub & Wrap",
+      description: "An exfoliating scrub followed by a nourishing body wrap to detoxify, hydrate, and leave your skin silky smooth.",
+      image: "https://images.pexels.com/photos/3188/love-romantic-bath-candlelight.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      price: "$150",
+      duration: "90 minutes",
+      link: "/booking"
     }
   ];
 
@@ -144,6 +123,7 @@ const Services = () => {
       image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ];
+   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -206,13 +186,51 @@ const Services = () => {
                       style={{ backgroundImage: `url(${service.image})` }}
                     />
                     <div className="p-6">
-                      <h3 className="text-xl text-black  font-serif mb-3">{service.title}</h3>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
-                     
-                      <button href="/servicesinfo" className="mt-4 text-pink-800 font-medium hover:text-pink-700 transition-colors duration-300 group-hover:underline">
-                        Learn more →
-                      </button>
-                    </div>
+      <h3 className="text-xl text-black font-serif mb-3">{service.title}</h3>
+      <p className="text-gray-600 mb-4">{service.description}</p>
+
+       <div className="p-6">
+    
+
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="mt-4 text-pink-800 font-medium hover:text-pink-700 transition-colors duration-300"
+      >
+        Learn more →
+      </button>
+
+      {/* ✅ Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-3xl w-full relative overflow-y-auto max-h-[80vh] text-left">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-red-600 text-xl font-bold"
+            >
+              &times;
+            </button>
+
+            <h2 className="text-2xl font-bold text-center mb-6">Our Story</h2>
+
+            <div className="text-gray-700 leading-relaxed space-y-4">
+              <p>
+                <strong>Founded in 2021</strong> by visionary entrepreneur <strong>Elena Brooks</strong> in the heart of <strong>Kosovo</strong>, EduSpark was created with a powerful mission: to revolutionize education by making high-quality online learning accessible, engaging, and transformative for learners across the globe.
+              </p>
+              <p>
+                Recognizing the urgent need for flexible, modern educational solutions in an increasingly digital world, Elena set out to build a platform that would not only deliver knowledge but also inspire personal and professional growth.
+              </p>
+              <p>
+                From the beginning, EduSpark distinguished itself through its commitment to innovation and learner-centric design. Our platform offers a diverse range of courses across technology, business, languages, and creative fields.
+              </p>
+              <p>
+                EduSpark is more than just a course provider; it is a thriving learning community. Through interactive modules, personalized learning paths, live mentorship, and peer collaboration, we ensure that every learner feels supported, challenged, and inspired.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+    </div>
                   </div>
                 ))}
               </div>
