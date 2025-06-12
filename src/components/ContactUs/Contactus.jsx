@@ -64,7 +64,6 @@ export default function ContactUs() {
       setSuccess(true);
       form.reset();
       
-
       setTimeout(() => setSuccess(false), 5000);
       
     } catch (error) {
