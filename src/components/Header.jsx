@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Leaf, Sun, Moon } from "lucide-react";
+import { Menu, X,  } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from 'next/image';
 
@@ -11,7 +11,8 @@ const navItems = [
   { name: "About Us", path: "/aboutus" },
   { name: "Services", path: "/services" },
   { name: "Contact", path: "/contact" },
-];
+]; 
+ 
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
