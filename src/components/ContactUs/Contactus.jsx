@@ -39,6 +39,38 @@ export default function ContactUs() {
       setLoading(false);
       return;
     }
+    try {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(values),
+  });
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    if (responseData.details && typeof responseData.details === 'object') {
+      setFieldErrors(responseData.details);
+    } else {
+      setErrorMessage(responseData.error || "Failed to send message");
+    }
+    return;
+  }
+
+  setSuccess(true);
+  form.reset();
+  setTimeout(() => setSuccess(false), 5000);
+
+} catch (error) {
+  console.error("Network error:", error);
+  setErrorMessage("Network error. Please check your connection and try again.");
+} finally {
+  setLoading(false);
+}
+
 
     try {
       const response = await fetch("/api/contact", {

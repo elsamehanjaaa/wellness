@@ -42,6 +42,7 @@ export default async function handler(req, res) {
         error: "Please enter a valid email address." 
       });
     }
+    console.log("API called with:", req.body);
 
     try {
       await dbConnect();
